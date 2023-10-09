@@ -6,7 +6,7 @@ const port = Number(process.env.port) || 3000;
 
 const app = express();
 app.use(express.json());
-app.use('/test', express.static('static'));
+app.use(express.static('static'));
 
 const gameServer = new Server({
     transport: new WebSocketTransport({server: createServer(app)})
