@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  qxj-server:
+    pull_policy: build
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - port=5345
+    ports:
+      - "${EXTERNAL_SERVER_PORT}:5345"
