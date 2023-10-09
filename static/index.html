@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #err, #joined {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<button onclick="join()">try join</button>
+<span id="joined">joined!</span>
+<span id="err">error!</span>
+
+<script src="https://unpkg.com/colyseus.js@^0.15.9/dist/colyseus.js"></script>
+<script>
+    function join() {
+        const url = "ws://" + window.location.host + '/ws';
+        console.log("joining: " + url);
+        let client = new Colyseus.Client(url);
+        client.joinOrCreate("lobby")
+            .then(() => document.getElementById('joined').style = 'display: unset !important;')
+            .catch( err => {
+                const span = document.getElementById('joined');
+                span.style = 'display: unset !important;';
+                span.innerText = err + '';
+            });
+    }
+</script>
+</body>
+</html>
