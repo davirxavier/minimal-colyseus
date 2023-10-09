@@ -9,7 +9,7 @@ app.use(express.json());
 app.use('/test', express.static('static'));
 
 const gameServer = new Server({
-    transport: new WebSocketTransport({server: createServer(app)})
+    transport: new WebSocketTransport({server: createServer(app), path: '/ws'})
 });
 
 gameServer.define("lobby", LobbyRoom);
