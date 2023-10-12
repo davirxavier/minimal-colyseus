@@ -22,7 +22,7 @@
 <script src="https://unpkg.com/colyseus.js@^0.15.9/dist/colyseus.js"></script>
 <script>
     function join() {
-        const url = "ws://" + window.location.host + '/' + window.location.pathname;
+        const url = "ws://" + window.location.host;
         console.log("joining: " + url);
         let client = new Colyseus.Client(url);
         client.joinOrCreate("lobby")

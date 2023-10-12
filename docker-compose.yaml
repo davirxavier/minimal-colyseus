@@ -12,7 +12,7 @@ services:
     ports:
       - "3000:3000"
   nginx:
-    image: nginx:1.16.0-alpine
+    image: nginx:1.25.2-alpine
     depends_on:
       - colyseus
     volumes:
